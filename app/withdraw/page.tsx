@@ -7,10 +7,10 @@ import Accordion from '@/components/ui/Accordion';
 export const metadata: Metadata = {
   title: 'Withdrawal Options',
   description:
-    'Withdraw your AuraGold investment as physical gold delivery to 50+ countries or via direct bank transfer. Learn about fees, timelines, and the process.',
+    'Withdraw your AurimGold investment as physical gold delivery to 50+ countries or via direct bank transfer. Learn about fees, timelines, and the process.',
   alternates: { canonical: '/withdraw' },
   openGraph: {
-    title: 'Withdrawal Options — AuraGold Investments',
+    title: 'Withdrawal Options — AurimGold Investments',
     description: 'Physical gold delivery or bank transfer. Your gold, your way.',
   },
 };
@@ -26,15 +26,15 @@ const withdrawalFaq = [
   },
   {
     question: 'What happens if my gold shipment is delayed or lost?',
-    answer: 'All AuraGold gold shipments are fully insured from dispatch to delivery through Lloyd\'s of London. In the unlikely event of loss, damage, or significant delay (beyond 30 business days), we initiate a full insurance claim and process either a replacement shipment or bank transfer equivalent at no cost to you.',
+    answer: 'All AurimGold gold shipments are fully insured from dispatch to delivery through Lloyd\'s of London. In the unlikely event of loss, damage, or significant delay (beyond 30 business days), we initiate a full insurance claim and process either a replacement shipment or bank transfer equivalent at no cost to you.',
   },
   {
     question: 'Which bank accounts can receive transfers?',
-    answer: 'AuraGold supports bank transfers to accounts in USD, EUR, GBP, AED, and SGD. Transfers are sent via SWIFT international wire. Your account must be in your name as verified on your AuraGold account. Processing takes 3–5 business days from approval.',
+    answer: 'AurimGold supports bank transfers to accounts in USD, EUR, GBP, AED, and SGD. Transfers are sent via SWIFT international wire. Your account must be in your name as verified on your AurimGold account. Processing takes 3–5 business days from approval.',
   },
   {
     question: 'Are there taxes on my gold withdrawal?',
-    answer: 'Tax obligations on gold proceeds vary by country and individual circumstances. AuraGold does not withhold taxes on behalf of investors. We recommend consulting a tax advisor in your jurisdiction regarding capital gains or wealth tax obligations related to gold investments.',
+    answer: 'Tax obligations on gold proceeds vary by country and individual circumstances. AurimGold does not withhold taxes on behalf of investors. We recommend consulting a tax advisor in your jurisdiction regarding capital gains or wealth tax obligations related to gold investments.',
   },
 ];
 

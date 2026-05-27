@@ -23,7 +23,7 @@ export default function FinalCTA() {
           Start Building Real Wealth with Gold Today
         </h2>
         <p className="text-[#0d1b2a]/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-          Join 10,000+ investors across 50 countries who trust AuraGold to grow and protect
+          Join 10,000+ investors across 50 countries who trust AurimGold to grow and protect
           their wealth through physical gold investment.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

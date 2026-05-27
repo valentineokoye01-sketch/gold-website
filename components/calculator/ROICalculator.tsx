@@ -17,8 +17,10 @@ export default function ROICalculator() {
 
   const calc = useMemo(() => {
     const principal = parseFloat(amount) || 0;
-    const monthlyReturn = plan.monthlyReturn / 100;
-    const totalProfit = principal * monthlyReturn * plan.period;
+    // Simple daily interest: profit = principal × (dailyReturn / 100) × days
+    const dailyRate = plan.dailyReturn / 100;
+    const dailyEarning = principal * dailyRate;
+    const totalProfit = dailyEarning * plan.days;
     const totalPayout = principal + totalProfit;
 
     const fee =
@@ -32,7 +34,7 @@ export default function ROICalculator() {
 
     return {
       principal,
-      monthlyReturn: principal * monthlyReturn,
+      dailyEarning,
       totalProfit,
       totalPayout,
       fee,
@@ -103,7 +105,7 @@ export default function ROICalculator() {
                   </span>
                 )}
                 <span className="block font-bold">{p.name}</span>
-                <span className="block text-xs opacity-70">{p.monthlyReturn}%/mo</span>
+                <span className="block text-xs opacity-70">{p.dailyReturn}%/day</span>
                 <span className="block text-xs opacity-50">{p.period}mo</span>
               </button>
             ))}
@@ -138,6 +140,14 @@ export default function ROICalculator() {
             </button>
           </div>
         </div>
+
+        {/* Rate summary */}
+        {inputValid && (
+          <div className="rounded-xl bg-[#faf8f4] border border-[#f0ece3] px-4 py-3 text-sm text-[#2e3d52]">
+            <span className="font-semibold text-[#0d1b2a]">{plan.dailyReturn}% daily</span> ×{' '}
+            {plan.days} days ({plan.period} months) = simple interest
+          </div>
+        )}
       </div>
 
       {/* Output Panel */}
@@ -155,8 +165,8 @@ export default function ROICalculator() {
           <>
             <div className="space-y-4 mb-8">
               {[
-                { label: 'Monthly Return', value: `$${fmt(calc.monthlyReturn)}`, highlight: false },
-                { label: `Total Profit (${plan.period} months)`, value: `$${fmt(calc.totalProfit)}`, highlight: true },
+                { label: 'Daily Earning', value: `$${fmt(calc.dailyEarning)}`, highlight: false },
+                { label: `Total Profit (${plan.days} days)`, value: `$${fmt(calc.totalProfit)}`, highlight: true },
                 { label: 'Total Withdrawal Amount', value: `$${fmt(calc.totalPayout)}`, highlight: false },
                 {
                   label: 'Estimated Gold Weight',
@@ -217,8 +227,8 @@ export default function ROICalculator() {
         )}
 
         <p className="text-white/20 text-xs mt-4 leading-relaxed">
-          * Return projections are based on current plan rates and are illustrative. Gold investment
-          carries market risk. Returns are not guaranteed.
+          * Return projections are based on current daily plan rates and are illustrative. Gold
+          investment carries market risk. Returns are not guaranteed.
         </p>
       </div>
     </div>

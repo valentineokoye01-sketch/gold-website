@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Placeholder — log submission (no real email integration)
-    console.log('[AuraGold Contact Form Submission]', {
+    console.log('[AurimGold Contact Form Submission]', {
       name,
       email,
       phone: phone || 'Not provided',

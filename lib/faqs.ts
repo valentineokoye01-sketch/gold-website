@@ -8,7 +8,7 @@ export const faqs: FAQ[] = [
   // Getting Started
   {
     category: 'Getting Started',
-    question: 'How do I open an account with AuraGold?',
+    question: 'How do I open an account with AurimGold?',
     answer:
       'Opening an account is simple. Visit our registration page, provide your email address, create a secure password, and complete our identity verification process. Once verified, your account is activated and you can fund your first investment within minutes.',
   },
@@ -22,7 +22,7 @@ export const faqs: FAQ[] = [
     category: 'Getting Started',
     question: 'What countries are supported?',
     answer:
-      'AuraGold accepts investors from 50+ countries across Europe, the Middle East, Asia, Africa, and the Americas. A full list of supported jurisdictions is available during registration. Physical gold shipment is available to all supported countries; bank transfers are processed in USD, EUR, GBP, AED, and SGD.',
+      'AurimGold accepts investors from 50+ countries across Europe, the Middle East, Asia, Africa, and the Americas. A full list of supported jurisdictions is available during registration. Physical gold shipment is available to all supported countries; bank transfers are processed in USD, EUR, GBP, AED, and SGD.',
   },
   {
     category: 'Getting Started',
@@ -74,13 +74,13 @@ export const faqs: FAQ[] = [
     category: 'Gold Storage & Security',
     question: 'Where is my gold stored?',
     answer:
-      'All investor gold is held in allocated storage in LBMA-certified vaults in London, Zurich, and Singapore. Your gold is physically segregated from AuraGold\'s operational assets and is titled in your name for full transparency. Vault details are available in your investor portal.',
+      'All investor gold is held in allocated storage in LBMA-certified vaults in London, Zurich, and Singapore. Your gold is physically segregated from AurimGold\'s operational assets and is titled in your name for full transparency. Vault details are available in your investor portal.',
   },
   {
     category: 'Gold Storage & Security',
     question: 'Is my gold insured?',
     answer:
-      'Yes. All gold held on behalf of AuraGold investors is insured at full replacement value through Lloyd\'s of London. Insurance covers theft, damage, and loss in transit for shipments. Premium plan investors receive enhanced shipment insurance for international deliveries.',
+      'Yes. All gold held on behalf of AurimGold investors is insured at full replacement value through Lloyd\'s of London. Insurance covers theft, damage, and loss in transit for shipments. Premium plan investors receive enhanced shipment insurance for international deliveries.',
   },
   {
     category: 'Gold Storage & Security',
@@ -138,7 +138,7 @@ export const faqs: FAQ[] = [
     category: 'Payments',
     question: 'How do I confirm a bank transfer payment?',
     answer:
-      'After initiating a bank wire, log into your investor portal and upload your transfer confirmation or SWIFT reference number. Include your unique AuraGold reference code in the memo field of the transfer. Once received and matched (typically 1–3 business days), your investment is activated.',
+      'After initiating a bank wire, log into your investor portal and upload your transfer confirmation or SWIFT reference number. Include your unique AurimGold reference code in the memo field of the transfer. Once received and matched (typically 1–3 business days), your investment is activated.',
   },
   {
     category: 'Payments',
@@ -150,7 +150,7 @@ export const faqs: FAQ[] = [
     category: 'Payments',
     question: 'Are there deposit fees?',
     answer:
-      'AuraGold does not charge deposit fees. For cryptocurrency payments, standard blockchain network fees (gas fees) apply and are payable by the sender. For bank transfers, your sending bank may charge an international wire fee — check with your bank. We receive the full amount you send.',
+      'AurimGold does not charge deposit fees. For cryptocurrency payments, standard blockchain network fees (gas fees) apply and are payable by the sender. For bank transfers, your sending bank may charge an international wire fee — check with your bank. We receive the full amount you send.',
   },
 
   // Account & Verification
@@ -170,13 +170,13 @@ export const faqs: FAQ[] = [
     category: 'Account & Verification',
     question: 'Can I have multiple accounts?',
     answer:
-      'Each individual may hold only one personal AuraGold account. Multiple plans can be held within a single account. If you believe you have a duplicate account, please contact support immediately. Corporate accounts are available for institutional investors — contact us for details.',
+      'Each individual may hold only one personal AurimGold account. Multiple plans can be held within a single account. If you believe you have a duplicate account, please contact support immediately. Corporate accounts are available for institutional investors — contact us for details.',
   },
   {
     category: 'Account & Verification',
     question: 'How do I contact support?',
     answer:
-      'Our support team is available via email (support@auragoldinvestments.com), WhatsApp (+1 800 287-4653), and Telegram (@AuraGoldSupport). Email responses are provided within 24 business hours. WhatsApp and Telegram messages are typically answered within 2–4 hours during business hours (Mon–Fri, 9am–6pm GMT).',
+      'Our support team is available via email (support@auragoldinvestments.com), WhatsApp (+1 800 287-4653), and Telegram (@AurimGoldSupport). Email responses are provided within 24 business hours. WhatsApp and Telegram messages are typically answered within 2–4 hours during business hours (Mon–Fri, 9am–6pm GMT).',
   },
 ];
 

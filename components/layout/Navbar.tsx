@@ -40,7 +40,7 @@ export default function Navbar() {
               className="font-bold text-lg md:text-xl leading-none"
               style={{ fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif' }}
             >
-              AuraGold
+              AurimGold
               <span className="hidden sm:inline text-[#c9a84c]"> Investments</span>
             </span>
           </Link>

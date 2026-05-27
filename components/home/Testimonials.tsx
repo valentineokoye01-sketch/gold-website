@@ -23,7 +23,7 @@ export default function Testimonials() {
             Trusted by Investors Worldwide
           </h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
-            Hear from real AuraGold investors across the globe.
+            Hear from real AurimGold investors across the globe.
           </p>
         </div>
 

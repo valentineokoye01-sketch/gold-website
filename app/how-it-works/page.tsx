@@ -8,10 +8,10 @@ import Accordion from '@/components/ui/Accordion';
 export const metadata: Metadata = {
   title: 'How It Works',
   description:
-    'Learn how AuraGold works: create your account, choose a plan, make a payment, and earn 2–4% monthly gold returns. Simple, transparent, and profitable.',
+    'Learn how AurimGold works: create your account, choose a plan, make a payment, and earn 2–4% monthly gold returns. Simple, transparent, and profitable.',
   alternates: { canonical: '/how-it-works' },
   openGraph: {
-    title: 'How AuraGold Works',
+    title: 'How AurimGold Works',
     description: 'Four simple steps to own physical gold and earn monthly returns.',
   },
 };
@@ -34,7 +34,7 @@ const steps = [
     icon: BarChart2,
     step: '02',
     title: 'Choose Your Investment Plan',
-    body: 'AuraGold offers three investment tiers designed to match different capital levels and time horizons. The Starter plan is ideal for first-time gold investors and those testing the platform. Growth offers a compelling 3% monthly return for mid-range investors. Premium is built for serious wealth builders seeking maximum returns with dedicated support.',
+    body: 'AurimGold offers three investment tiers designed to match different capital levels and time horizons. The Starter plan is ideal for first-time gold investors and those testing the platform. Growth offers a compelling 3% monthly return for mid-range investors. Premium is built for serious wealth builders seeking maximum returns with dedicated support.',
     bullets: [
       'Starter: $500–$4,999 · 2% monthly · 3-month period',
       'Growth: $5,000–$24,999 · 3% monthly · 6-month period',
@@ -76,8 +76,8 @@ const steps = [
 
 const faqTeaser = [
   {
-    question: 'Is AuraGold regulated?',
-    answer: 'Yes. AuraGold holds valid financial services licences in each jurisdiction it operates and undergoes quarterly independent audits. All investor gold is held in LBMA-certified vaults, insured at full value through Lloyd\'s of London.',
+    question: 'Is AurimGold regulated?',
+    answer: 'Yes. AurimGold holds valid financial services licences in each jurisdiction it operates and undergoes quarterly independent audits. All investor gold is held in LBMA-certified vaults, insured at full value through Lloyd\'s of London.',
   },
   {
     question: 'Can I withdraw before my plan ends?',
@@ -221,7 +221,7 @@ export default function HowItWorksPage() {
             <FadeIn direction="left">
               <SectionHeading
                 title="Your Gold is Safe"
-                subtitle="Security is not an afterthought at AuraGold — it is the foundation of everything we do."
+                subtitle="Security is not an afterthought at AurimGold — it is the foundation of everything we do."
                 className="mb-8"
               />
               <div className="space-y-5">

@@ -6,10 +6,10 @@ import ROICalculator from '@/components/calculator/ROICalculator';
 export const metadata: Metadata = {
   title: 'ROI Calculator',
   description:
-    'Calculate your projected gold investment returns with AuraGold\'s ROI calculator. Enter your amount, choose a plan, and see your estimated payout instantly.',
+    'Calculate your projected gold investment returns with AurimGold\'s ROI calculator. Enter your amount, choose a plan, and see your estimated payout instantly.',
   alternates: { canonical: '/calculator' },
   openGraph: {
-    title: 'Gold Returns Calculator — AuraGold Investments',
+    title: 'Gold Returns Calculator — AurimGold Investments',
     description: 'Calculate your projected 2–4% monthly returns on physical gold investment.',
   },
 };

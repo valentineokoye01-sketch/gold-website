@@ -18,22 +18,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | AuraGold Investments',
-    default: 'AuraGold Investments — Own Real Gold. Earn Real Returns.',
+    template: '%s | AurimGold Investments',
+    default: 'AurimGold Investments — Own Real Gold. Earn Real Returns.',
   },
   description:
-    'Invest in physical gold from $500. Earn 2–4% monthly returns. Withdraw as gold shipment or bank transfer. AuraGold — making gold accessible to everyone.',
+    'Invest in physical gold from $500. Earn 2–4% daily returns. Withdraw as gold shipment or bank transfer. AurimGold — making gold accessible to everyone.',
   keywords: ['gold investment', 'buy gold online', 'gold returns', 'physical gold', 'investment platform'],
   openGraph: {
     type: 'website',
-    siteName: 'AuraGold Investments',
-    title: 'AuraGold Investments — Own Real Gold. Earn Real Returns.',
+    siteName: 'AurimGold Investments',
+    title: 'AurimGold Investments — Own Real Gold. Earn Real Returns.',
     description:
-      'Invest in physical gold from $500. Earn 2–4% monthly returns. Withdraw as gold shipment or bank transfer.',
+      'Invest in physical gold from $500. Earn 2–4% daily returns. Withdraw as gold shipment or bank transfer.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AuraGold Investments',
+    title: 'AurimGold Investments',
     description: 'Own Real Gold. Earn Real Returns. Invest from $500.',
   },
 };

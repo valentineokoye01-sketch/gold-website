@@ -7,10 +7,10 @@ import Accordion from '@/components/ui/Accordion';
 export const metadata: Metadata = {
   title: 'Payment Methods',
   description:
-    'Fund your AuraGold investment via Bitcoin, Ethereum, USDT, or international bank wire transfer. Fast, secure, and available from 80+ countries.',
+    'Fund your AurimGold investment via Bitcoin, Ethereum, USDT, or international bank wire transfer. Fast, secure, and available from 80+ countries.',
   alternates: { canonical: '/payments' },
   openGraph: {
-    title: 'Payment Methods — AuraGold Investments',
+    title: 'Payment Methods — AurimGold Investments',
     description: 'Pay via crypto (BTC, ETH, USDT) or bank transfer from 80+ countries.',
   },
 };
@@ -46,7 +46,7 @@ const cryptoCurrencies = [
 ];
 
 const cryptoSteps = [
-  { icon: Copy, label: 'Copy Wallet Address', desc: 'Copy your unique AuraGold deposit address from your investor portal.' },
+  { icon: Copy, label: 'Copy Wallet Address', desc: 'Copy your unique AurimGold deposit address from your investor portal.' },
   { icon: Send, label: 'Send Exact Amount', desc: 'Send your intended investment amount to the address. Include no memo or tag unless specified.' },
   { icon: Zap, label: 'Share Transaction Hash', desc: 'Submit your TXID (transaction hash) in your portal to allow instant tracking.' },
   { icon: Lock, label: 'Await Confirmation', desc: 'Wait for the required number of blockchain confirmations for your cryptocurrency.' },
@@ -56,11 +56,11 @@ const cryptoSteps = [
 const paymentFaq = [
   {
     question: 'What cryptocurrencies do you accept?',
-    answer: 'AuraGold accepts Bitcoin (BTC), Ethereum (ETH on ERC-20), and Tether USDT on both TRC-20 and ERC-20 networks. We recommend USDT TRC-20 for the fastest confirmation times and lowest network fees. All wallet addresses are unique per investor per transaction.',
+    answer: 'AurimGold accepts Bitcoin (BTC), Ethereum (ETH on ERC-20), and Tether USDT on both TRC-20 and ERC-20 networks. We recommend USDT TRC-20 for the fastest confirmation times and lowest network fees. All wallet addresses are unique per investor per transaction.',
   },
   {
     question: 'How do I confirm my bank transfer?',
-    answer: 'After initiating your bank wire, log into your investor portal and submit your transfer confirmation document or SWIFT reference number. Always include your unique AuraGold reference code in the memo or payment reference field. Without this code, matching your payment may be delayed.',
+    answer: 'After initiating your bank wire, log into your investor portal and submit your transfer confirmation document or SWIFT reference number. Always include your unique AurimGold reference code in the memo or payment reference field. Without this code, matching your payment may be delayed.',
   },
   {
     question: 'My crypto transaction hasn\'t been credited after 24 hours — what do I do?',
@@ -68,11 +68,11 @@ const paymentFaq = [
   },
   {
     question: 'Are there any deposit fees?',
-    answer: 'AuraGold charges no deposit fees. For cryptocurrency payments, standard blockchain network fees (gas fees) apply and are payable by the sender. For bank wire transfers, your sending bank may charge an international transfer fee — this is outside our control. We receive and credit the full net amount deposited.',
+    answer: 'AurimGold charges no deposit fees. For cryptocurrency payments, standard blockchain network fees (gas fees) apply and are payable by the sender. For bank wire transfers, your sending bank may charge an international transfer fee — this is outside our control. We receive and credit the full net amount deposited.',
   },
   {
     question: 'Can I invest in a different currency than USD?',
-    answer: 'Yes. AuraGold accepts bank transfers in USD, EUR, GBP, AED, SGD, and other currencies on request. All investments are denominated and tracked in USD for consistency. Currency conversion at the prevailing exchange rate is applied automatically when your transfer is received in a non-USD currency.',
+    answer: 'Yes. AurimGold accepts bank transfers in USD, EUR, GBP, AED, SGD, and other currencies on request. All investments are denominated and tracked in USD for consistency. Currency conversion at the prevailing exchange rate is applied automatically when your transfer is received in a non-USD currency.',
   },
 ];
 
@@ -181,7 +181,7 @@ export default function PaymentsPage() {
                   { label: 'Currencies Accepted', value: 'USD, EUR, GBP, AED, SGD' },
                   { label: 'Processing Time', value: '1–3 business days after receipt' },
                   { label: 'Minimum Transfer', value: '$500 USD equivalent' },
-                  { label: 'Required', value: 'Unique AuraGold reference code in memo' },
+                  { label: 'Required', value: 'Unique AurimGold reference code in memo' },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between py-3 border-b border-[#c9a84c]/10">
                     <span className="text-white/50 text-sm">{label}</span>
@@ -200,8 +200,8 @@ export default function PaymentsPage() {
                 </h4>
                 <ol className="space-y-4">
                   {[
-                    'Log into your AuraGold investor portal to retrieve your unique reference code.',
-                    'Initiate an international wire transfer from your bank to AuraGold\'s receiving account.',
+                    'Log into your AurimGold investor portal to retrieve your unique reference code.',
+                    'Initiate an international wire transfer from your bank to AurimGold\'s receiving account.',
                     'Include your unique reference code in the payment memo or reference field.',
                     'Upload your transfer confirmation or SWIFT receipt to your portal.',
                     'Investment is activated within 1–3 business days of confirmed receipt.',
@@ -240,7 +240,7 @@ export default function PaymentsPage() {
               {
                 icon: Lock,
                 title: 'Cold Wallet Storage',
-                desc: 'Cryptocurrency received by AuraGold is immediately moved to offline cold storage — never exposed to hot wallet risks.',
+                desc: 'Cryptocurrency received by AurimGold is immediately moved to offline cold storage — never exposed to hot wallet risks.',
               },
               {
                 icon: CheckCircle,

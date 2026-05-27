@@ -1,10 +1,10 @@
-export const SITE_NAME = 'AuraGold Investments';
+export const SITE_NAME = 'AurimGold Investments';
 export const SITE_TAGLINE = 'Making gold accessible to everyone';
 export const SITE_URL = 'https://auragoldinvestments.com';
 
 export const CONTACT_EMAIL = 'support@auragoldinvestments.com';
 export const CONTACT_WHATSAPP = '+1 (800) 287-4653';
-export const CONTACT_TELEGRAM = '@AuraGoldSupport';
+export const CONTACT_TELEGRAM = '@AurimGoldSupport';
 
 export const GOLD_REFERENCE_PRICE = 2345; // USD per troy oz
 export const TROY_OZ_TO_GRAMS = 31.1035;
@@ -31,7 +31,7 @@ export const SOCIAL_LINKS = {
   twitter: 'https://twitter.com/auragoldinvest',
   linkedin: 'https://linkedin.com/company/auragoldinvestments',
   instagram: 'https://instagram.com/auragoldinvestments',
-  telegram: 'https://t.me/AuraGoldSupport',
+  telegram: 'https://t.me/AurimGoldSupport',
   whatsapp: 'https://wa.me/18002874653',
 };
 

@@ -9,10 +9,10 @@ import { team } from '@/lib/team';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about AuraGold Investments — our story, mission, leadership team, and commitment to regulated, transparent gold investment since 2018.',
+    'Learn about AurimGold Investments — our story, mission, leadership team, and commitment to regulated, transparent gold investment since 2018.',
   alternates: { canonical: '/about' },
   openGraph: {
-    title: 'About AuraGold Investments',
+    title: 'About AurimGold Investments',
     description: 'Our story, mission, and the team behind the world\'s most accessible gold investment platform.',
   },
 };
@@ -65,7 +65,7 @@ export default function AboutPage() {
               Who We Are
             </h1>
             <p className="text-white/60 text-xl max-w-2xl mx-auto mt-8">
-              AuraGold is on a mission to make institutional-grade gold investment accessible to every
+              AurimGold is on a mission to make institutional-grade gold investment accessible to every
               person on earth with an internet connection.
             </p>
           </FadeIn>
@@ -81,7 +81,7 @@ export default function AboutPage() {
           <div className="space-y-6 text-[#2e3d52] text-lg leading-relaxed">
             <FadeIn delay={100}>
               <p>
-                AuraGold was founded in 2018 by a team of commodities traders and fintech engineers
+                AurimGold was founded in 2018 by a team of commodities traders and fintech engineers
                 who believed the same truth: the world&apos;s most proven store of value should not
                 be restricted to banks, hedge funds, and the ultra-wealthy. Physical gold had a
                 liquidity problem, a distribution problem, and an access problem. We set out to solve
@@ -98,7 +98,7 @@ export default function AboutPage() {
             </FadeIn>
             <FadeIn delay={300}>
               <p>
-                Today, AuraGold serves over 10,000 active investors across 50+ countries, managing
+                Today, AurimGold serves over 10,000 active investors across 50+ countries, managing
                 more than $50M in physical gold. Our London, Dubai, and Singapore offices coordinate
                 vault operations, investor support, and regulatory compliance across multiple
                 jurisdictions — ensuring that wherever you are, your gold is safe, verified, and
@@ -162,7 +162,7 @@ export default function AboutPage() {
           <FadeIn>
             <SectionHeading
               title="Our Core Values"
-              subtitle="Every decision at AuraGold is guided by four principles."
+              subtitle="Every decision at AurimGold is guided by four principles."
               centered
               className="mb-14"
             />
@@ -189,7 +189,7 @@ export default function AboutPage() {
           <FadeIn>
             <SectionHeading
               title="Leadership Team"
-              subtitle="The experienced professionals behind AuraGold."
+              subtitle="The experienced professionals behind AurimGold."
               centered
               light
               className="mb-14"
@@ -233,7 +233,7 @@ export default function AboutPage() {
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
             {[
-              { icon: Shield, title: 'Licensed', desc: 'AuraGold operates under a valid financial services licence in each jurisdiction it serves, meeting all regulatory capital and operational requirements.' },
+              { icon: Shield, title: 'Licensed', desc: 'AurimGold operates under a valid financial services licence in each jurisdiction it serves, meeting all regulatory capital and operational requirements.' },
               { icon: Lock, title: 'Insured', desc: 'All investor gold holdings are insured at full replacement value through Lloyd\'s of London, covering theft, loss, and transit.' },
               { icon: Eye, title: 'Audited', desc: 'Independent quarterly audits by a Big Four accounting firm verify that every investor\'s allocated gold exists exactly as recorded.' },
             ].map(({ icon: Icon, title, desc }, i) => (

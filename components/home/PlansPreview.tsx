@@ -61,7 +61,7 @@ export default function PlansPreview() {
                   }`}
                   style={{ fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif' }}
                 >
-                  {plan.monthlyReturn}%
+                  {plan.dailyReturn}%
                 </span>
               </div>
               <p
@@ -69,14 +69,14 @@ export default function PlansPreview() {
                   plan.highlighted ? 'text-white/50' : 'text-[#2e3d52]'
                 }`}
               >
-                monthly return*
+                daily return*
               </p>
               <p
                 className={`text-xs mb-8 ${
                   plan.highlighted ? 'text-[#c9a84c]/60' : 'text-[#2e3d52]/60'
                 }`}
               >
-                {plan.period}-month investment period
+                {plan.period}-month investment period ({plan.days} days)
               </p>
 
               <ul className="space-y-2.5 mb-8">
@@ -84,9 +84,7 @@ export default function PlansPreview() {
                   <li key={f} className="flex items-center gap-2.5 text-sm">
                     <Check
                       size={15}
-                      className={`flex-shrink-0 ${
-                        plan.highlighted ? 'text-[#c9a84c]' : 'text-[#c9a84c]'
-                      }`}
+                      className="flex-shrink-0 text-[#c9a84c]"
                     />
                     <span className={plan.highlighted ? 'text-white/70' : 'text-[#2e3d52]'}>
                       {f}

@@ -8,10 +8,10 @@ import { CONTACT_EMAIL, CONTACT_WHATSAPP, CONTACT_TELEGRAM, OFFICES, SOCIAL_LINK
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
-    'Get in touch with AuraGold Investments. Email, WhatsApp, or Telegram — our team responds within 24 hours on business days.',
+    'Get in touch with AurimGold Investments. Email, WhatsApp, or Telegram — our team responds within 24 hours on business days.',
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact AuraGold Investments',
+    title: 'Contact AurimGold Investments',
     description: 'We\'re here to help. Reach our support team via email, WhatsApp, or Telegram.',
   },
 };

@@ -3,8 +3,9 @@ export interface Plan {
   slug: string;
   minInvestment: number;
   maxInvestment: number | null;
-  monthlyReturn: number;
-  period: number;
+  dailyReturn: number;       // % per day (simple interest)
+  period: number;            // months
+  days: number;              // trading days in period (period × 30)
   badge: string | null;
   features: string[];
   color: string;
@@ -17,8 +18,9 @@ export const plans: Plan[] = [
     slug: 'starter',
     minInvestment: 500,
     maxInvestment: 4999,
-    monthlyReturn: 2,
+    dailyReturn: 2,
     period: 3,
+    days: 90,
     badge: null,
     features: [
       'Crypto & Bank Transfer',
@@ -35,8 +37,9 @@ export const plans: Plan[] = [
     slug: 'growth',
     minInvestment: 5000,
     maxInvestment: 24999,
-    monthlyReturn: 3,
+    dailyReturn: 3,
     period: 6,
+    days: 180,
     badge: 'Most Popular',
     features: [
       'Crypto & Bank Transfer',
@@ -54,8 +57,9 @@ export const plans: Plan[] = [
     slug: 'premium',
     minInvestment: 25000,
     maxInvestment: null,
-    monthlyReturn: 4,
+    dailyReturn: 4,
     period: 12,
+    days: 360,
     badge: 'Best Returns',
     features: [
       'Crypto & Bank Transfer',

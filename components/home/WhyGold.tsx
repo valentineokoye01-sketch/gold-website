@@ -20,7 +20,7 @@ const reasons = [
   {
     icon: DollarSign,
     title: 'Passive Returns',
-    desc: 'Through AuraGold, your allocated gold generates 2–4% monthly returns via institutional trading strategies.',
+    desc: 'Through AurimGold, your allocated gold generates 2–4% monthly returns via institutional trading strategies.',
   },
   {
     icon: Package,

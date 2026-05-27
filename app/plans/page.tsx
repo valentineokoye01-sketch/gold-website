@@ -9,18 +9,18 @@ import FadeIn from '@/components/ui/FadeIn';
 export const metadata: Metadata = {
   title: 'Investment Plans',
   description:
-    'Choose from AuraGold\'s Starter, Growth, or Premium gold investment plans. Earn 2–4% monthly returns from $500. Compare features and start today.',
+    'Choose from AurimGold\'s Starter, Growth, or Premium gold investment plans. Earn 2–4% daily returns from $500. Compare features and start today.',
   alternates: { canonical: '/plans' },
   openGraph: {
-    title: 'AuraGold Investment Plans — Starter, Growth & Premium',
-    description: 'Compare gold investment plans and earn 2–4% monthly returns from $500.',
+    title: 'AurimGold Investment Plans — Starter, Growth & Premium',
+    description: 'Compare gold investment plans and earn 2–4% daily returns from $500.',
   },
 };
 
 const tableRows = [
   { feature: 'Minimum Investment', starter: '$500', growth: '$5,000', premium: '$25,000' },
-  { feature: 'Monthly Return', starter: '2%', growth: '3%', premium: '4%' },
-  { feature: 'Investment Period', starter: '3 months', growth: '6 months', premium: '12 months' },
+  { feature: 'Daily Return', starter: '2%/day', growth: '3%/day', premium: '4%/day' },
+  { feature: 'Investment Period', starter: '3 months (90 days)', growth: '6 months (180 days)', premium: '12 months (360 days)' },
   { feature: 'Payment Methods', starter: 'Crypto, Bank', growth: 'Crypto, Bank', premium: 'Crypto, Bank' },
   { feature: 'Withdrawal Options', starter: 'Gold / Cash', growth: 'Gold / Cash', premium: 'Gold / Cash' },
   { feature: 'Support', starter: 'Email', growth: 'Priority', premium: 'Dedicated Manager' },
@@ -28,10 +28,11 @@ const tableRows = [
   { feature: 'Early Withdrawal', starter: false, growth: false, premium: true },
 ];
 
+// ROI scenarios using simple daily interest: profit = principal × (rate/100) × days
 const roiScenarios = [
-  { principal: 1000, rate: 2, period: 3, plan: 'Starter' },
-  { principal: 5000, rate: 3, period: 6, plan: 'Growth' },
-  { principal: 25000, rate: 4, period: 12, plan: 'Premium' },
+  { principal: 1000,  rate: 2, days: 90,  period: '3 months',  plan: 'Starter'  },
+  { principal: 5000,  rate: 3, days: 180, period: '6 months',  plan: 'Growth'   },
+  { principal: 25000, rate: 4, days: 360, period: '12 months', plan: 'Premium'  },
 ];
 
 export default function PlansPage() {
@@ -96,14 +97,14 @@ export default function PlansPage() {
                         }`}
                         style={{ fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif' }}
                       >
-                        {plan.monthlyReturn}%
+                        {plan.dailyReturn}%
                       </span>
                       <span className={`text-sm mb-3 ${plan.highlighted ? 'text-white/50' : 'text-[#2e3d52]'}`}>
-                        /month*
+                        /day*
                       </span>
                     </div>
                     <p className={`text-sm ${plan.highlighted ? 'text-[#c9a84c]/60' : 'text-[#2e3d52]/60'}`}>
-                      Over {plan.period} months
+                      Over {plan.period} months ({plan.days} days)
                     </p>
                   </div>
 
@@ -215,14 +216,14 @@ export default function PlansPage() {
           <FadeIn>
             <SectionHeading
               title="Return Scenarios"
-              subtitle="Illustrative projections based on current plan rates, subject to market conditions."
+              subtitle="Illustrative projections based on current daily plan rates, subject to market conditions."
               centered
               className="mb-12"
             />
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {roiScenarios.map(({ principal, rate, period, plan }, i) => {
-              const profit = principal * (rate / 100) * period;
+            {roiScenarios.map(({ principal, rate, days, period, plan }, i) => {
+              const profit = principal * (rate / 100) * days;
               const total = principal + profit;
               return (
                 <FadeIn key={plan} delay={i * 100}>
@@ -231,7 +232,7 @@ export default function PlansPage() {
                       {plan} Plan
                     </p>
                     <p className="text-[#2e3d52] text-sm mb-4">
-                      ${principal.toLocaleString()} · {rate}%/month · {period} months
+                      ${principal.toLocaleString()} · {rate}%/day · {period} ({days} days)
                     </p>
                     <div className="my-4 py-4 border-y border-[#f0ece3]">
                       <p className="text-[#2e3d52]/60 text-xs mb-1">Total Profit</p>

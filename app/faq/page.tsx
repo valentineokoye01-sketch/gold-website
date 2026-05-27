@@ -10,11 +10,11 @@ import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'FAQ',
   description:
-    'Find answers to common questions about AuraGold — getting started, investment plans, gold storage, withdrawals, payments, and account management.',
+    'Find answers to common questions about AurimGold — getting started, investment plans, gold storage, withdrawals, payments, and account management.',
   alternates: { canonical: '/faq' },
   openGraph: {
-    title: 'FAQ — AuraGold Investments',
-    description: 'Answers to the most common questions about gold investment with AuraGold.',
+    title: 'FAQ — AurimGold Investments',
+    description: 'Answers to the most common questions about gold investment with AurimGold.',
   },
 };
 
@@ -33,7 +33,7 @@ export default function FaqPage() {
               <span className="text-[#c9a84c]">Questions</span>
             </h1>
             <p className="text-white/60 text-xl">
-              Everything you need to know about investing with AuraGold — organised by topic.
+              Everything you need to know about investing with AurimGold — organised by topic.
             </p>
           </FadeIn>
         </div>

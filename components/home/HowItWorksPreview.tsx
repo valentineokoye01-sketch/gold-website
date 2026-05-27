@@ -37,7 +37,7 @@ export default function HowItWorksPreview() {
             className="font-playfair text-3xl md:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif' }}
           >
-            How AuraGold Works
+            How AurimGold Works
           </h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
             Four simple steps stand between you and gold-backed returns.

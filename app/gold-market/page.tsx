@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'Live XAU/USD gold prices, 12-month historical chart, market analysis, and educational content about the global gold market.',
   alternates: { canonical: '/gold-market' },
   openGraph: {
-    title: 'Live Gold Market — AuraGold Investments',
+    title: 'Live Gold Market — AurimGold Investments',
     description: 'Track live XAU/USD prices, historical performance, and understand why gold holds its value.',
   },
 };
@@ -69,7 +69,7 @@ const educationItems = [
   },
   {
     question: 'What is a troy ounce?',
-    answer: 'A troy ounce (oz t) is the standard unit for weighing precious metals. It equals 31.1034768 grams — slightly heavier than a standard avoirdupois ounce (28.35 grams). All gold pricing, contracts, and vault allocations use troy ounces. When AuraGold states your gold allocation, it is expressed in troy ounces.',
+    answer: 'A troy ounce (oz t) is the standard unit for weighing precious metals. It equals 31.1034768 grams — slightly heavier than a standard avoirdupois ounce (28.35 grams). All gold pricing, contracts, and vault allocations use troy ounces. When AurimGold states your gold allocation, it is expressed in troy ounces.',
   },
   {
     question: 'What drives the price of gold?',

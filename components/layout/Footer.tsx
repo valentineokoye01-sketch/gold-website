@@ -45,7 +45,7 @@ export default function Footer() {
                 className="font-bold text-lg"
                 style={{ fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif' }}
               >
-                AuraGold
+                AurimGold
               </span>
             </Link>
             <p className="text-sm text-white/50 leading-relaxed mb-5">
@@ -209,7 +209,7 @@ export default function Footer() {
         {/* Legal Disclaimer */}
         <div className="border-t border-white/10 pt-8 mb-6">
           <p className="text-xs text-white/30 leading-relaxed max-w-4xl">
-            AuraGold Investments is a regulated gold trading platform. All investments carry risk.
+            AurimGold Investments is a regulated gold trading platform. All investments carry risk.
             Past performance does not guarantee future returns. Gold values may fluctuate. Investment
             returns are subject to market conditions and are not guaranteed. Please read our Risk
             Disclosure before investing.
@@ -219,7 +219,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-white/30">
-            © 2026 AuraGold Investments. All Rights Reserved.
+            © 2026 AurimGold Investments. All Rights Reserved.
           </p>
           <p className="text-xs text-white/20">
             {CONTACT_EMAIL} · {CONTACT_WHATSAPP}
