@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0d1b2a;
+  --color-navy-light: #162336;
+  --color-navy-dark: #080f17;
+  --color-gold: #c9a84c;
+  --color-gold-light: #d4b96a;
+  --color-gold-dark: #a8852e;
+  --color-cream: #faf8f4;
+  --color-cream-dark: #f0ece3;
+  --color-ink: #1a2535;
+  --color-ink-light: #2e3d52;
+
+  --font-playfair: var(--font-playfair);
+  --font-inter: var(--font-inter);
+}
+
+:root {
+  --background: #faf8f4;
+  --foreground: #1a2535;
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Keyframe Animations ── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Utility Classes ── */
+
+.font-playfair {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), 'Inter', Arial, sans-serif;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    #c9a84c 0%,
+    #faf8f4 40%,
+    #c9a84c 60%,
+    #a8852e 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 2s ease-in-out infinite;
+}
+
+/* ── Gold shimmer button effect ── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-shimmer:hover::after {
+  left: 150%;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1b2a;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a84c;
+  border-radius: 3px;
+}
+
+/* ── Gold underline accent ── */
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #c9a84c, #d4b96a);
+  border-radius: 2px;
+}
+
+/* ── Selection styling ── */
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: #0d1b2a;
+}
+
+/* ── Accordion transition ── */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-content.open {
+  max-height: 600px;
+}
+
+/* ── Ticker strip ── */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-flex;
+  animation: marquee 40s linear infinite;
+}
