@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Gem, Globe, Briefcase, Camera, Send, MessageCircle } from 'lucide-react';
+import { Gem, Camera, Send, MessageCircle } from 'lucide-react';
 import { CONTACT_EMAIL, CONTACT_WHATSAPP, CONTACT_TELEGRAM, SOCIAL_LINKS } from '@/lib/constants';
 
 const quickLinks = [
@@ -54,22 +54,13 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex items-center gap-3">
               <a
-                href={SOCIAL_LINKS.twitter}
+                href={SOCIAL_LINKS.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
-                aria-label="Twitter / X"
+                aria-label="WhatsApp"
               >
-                <Globe size={14} />
-              </a>
-              <a
-                href={SOCIAL_LINKS.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Briefcase size={14} />
+                <MessageCircle size={14} />
               </a>
               <a
                 href={SOCIAL_LINKS.instagram}
@@ -88,15 +79,6 @@ export default function Footer() {
                 aria-label="Telegram"
               >
                 <Send size={14} />
-              </a>
-              <a
-                href={SOCIAL_LINKS.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle size={14} />
               </a>
             </div>
           </div>

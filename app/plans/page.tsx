@@ -118,7 +118,7 @@ export default function PlansPage() {
                   </ul>
 
                   <Link
-                    href="/contact"
+                    href={`/auth/signup?plan=${plan.slug}`}
                     className={`block w-full text-center py-4 rounded-xl font-bold text-base transition-all duration-300 hover:-translate-y-0.5 ${
                       plan.highlighted
                         ? 'bg-[#c9a84c] hover:bg-[#a8852e] text-[#0d1b2a]'
