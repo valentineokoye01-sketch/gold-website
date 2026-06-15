@@ -17,27 +17,30 @@ export const metadata: Metadata = {
 
 const cryptoCurrencies = [
   {
-    symbol: 'BTC',
-    name: 'Bitcoin',
-    network: 'Bitcoin Network',
-    confirmations: '3 confirmations',
-    minimum: '$100',
-    time: '30–60 min',
-    color: '#F7931A',
-  },
-  {
     symbol: 'ETH',
     name: 'Ethereum',
     network: 'ERC-20 Network',
+    address: '0x14b6Acb47E2171924de76406Bbc4200A26Dd670a',
     confirmations: '12 confirmations',
     minimum: '$100',
     time: '5–15 min',
     color: '#627EEA',
   },
   {
+    symbol: 'BTC',
+    name: 'Bitcoin',
+    network: 'Bitcoin Network',
+    address: 'bc1q4mk45630j32ngl0hxw89gjnqmw47dhlgg7n2f4',
+    confirmations: '3 confirmations',
+    minimum: '$100',
+    time: '30–60 min',
+    color: '#F7931A',
+  },
+  {
     symbol: 'USDT',
     name: 'Tether USDT',
-    network: 'TRC-20 or ERC-20',
+    network: 'TRC-20',
+    address: 'TXmboJbByLEGbL2PmXNKd41SeHETLuFfQd',
     confirmations: '1 confirmation (TRC-20)',
     minimum: '$50',
     time: '1–3 min',
@@ -122,6 +125,11 @@ export default function PaymentsPage() {
                   <p className="text-[#c9a84c] text-xs font-semibold uppercase tracking-widest mb-4">
                     {c.network}
                   </p>
+                  {/* Wallet address */}
+                  <div className="bg-[#f7f4ee] rounded-xl px-3 py-3 mb-4">
+                    <p className="text-[#2e3d52]/40 text-xs mb-1 uppercase tracking-wider font-semibold">Wallet Address</p>
+                    <p className="text-[#0d1b2a] text-xs font-mono break-all leading-relaxed select-all">{c.address}</p>
+                  </div>
                   <div className="space-y-2 text-sm">
                     {[
                       ['Confirmations', c.confirmations],
@@ -175,17 +183,17 @@ export default function PaymentsPage() {
                 light
                 className="mb-8"
               />
-              <div className="space-y-5">
+              <div className="space-y-3">
                 {[
-                  { label: 'Supported Countries', value: '80+ globally' },
-                  { label: 'Currencies Accepted', value: 'USD, EUR, GBP, AED, SGD' },
+                  { label: 'Bank', value: 'Bank of America' },
+                  { label: 'Account Name', value: 'Ricky Richardson' },
+                  { label: 'Account Number', value: '488082660530' },
                   { label: 'Processing Time', value: '1–3 business days after receipt' },
                   { label: 'Minimum Transfer', value: '$500 USD equivalent' },
-                  { label: 'Required', value: 'Unique AurimGold reference code in memo' },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between py-3 border-b border-[#c9a84c]/10">
                     <span className="text-white/50 text-sm">{label}</span>
-                    <span className="text-white font-semibold text-sm text-right max-w-[200px]">{value}</span>
+                    <span className="text-white font-semibold text-sm text-right max-w-[220px] font-mono">{value}</span>
                   </div>
                 ))}
               </div>

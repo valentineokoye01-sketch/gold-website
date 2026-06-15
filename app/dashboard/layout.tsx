@@ -15,7 +15,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <DashboardSidebar userName={user.name} />
       {/* Content offset for sidebar */}
       <div className="lg:pl-64">
-        <div className="pt-14 lg:pt-0 min-h-screen">
+        <div className="pt-14 lg:pt-10 min-h-screen">
           {children}
         </div>
       </div>
