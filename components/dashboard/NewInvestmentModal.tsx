@@ -6,9 +6,9 @@ import { X, Copy, Check, Loader2 } from 'lucide-react';
 import { plans } from '@/lib/plans';
 
 const WALLETS = {
-  crypto_btc:  { label: 'Bitcoin (BTC)', address: '1A1zP1eP5QGefi2DMPTfTL5SLmv7Divf5R' },
-  crypto_eth:  { label: 'Ethereum (ETH)', address: '0x742d35Cc6634C0532925a3b8D4C9f5b5a0F1234' },
-  crypto_usdt: { label: 'USDT (TRC-20)', address: 'TGDsV6Nm7esCPSYm4PQzNvmnRm2t9kZ0oR' },
+  crypto_eth:  { label: 'Ethereum (ETH)', address: '0x14b6Acb47E2171924de76406Bbc4200A26Dd670a' },
+  crypto_btc:  { label: 'Bitcoin (BTC)', address: 'bc1q4mk45630j32ngl0hxw89gjnqmw47dhlgg7n2f4' },
+  crypto_usdt: { label: 'USDT (TRC-20)', address: 'TXmboJbByLEGbL2PmXNKd41SeHETLuFfQd' },
 };
 
 interface Props { onClose: () => void; defaultPlan?: string; }
@@ -177,9 +177,9 @@ export default function NewInvestmentModal({ onClose, defaultPlan }: Props) {
 
               {paymentMethod === 'bank' && (
                 <div className="bg-[#0d1b2a] rounded-xl p-4 space-y-1 text-xs text-white/50">
-                  <p><span className="text-white/70 font-medium">Bank:</span> Barclays International</p>
-                  <p><span className="text-white/70 font-medium">Account:</span> AurimGold Holdings Ltd</p>
-                  <p><span className="text-white/70 font-medium">IBAN:</span> GB29 NWBK 6016 1331 9268 19</p>
+                  <p><span className="text-white/70 font-medium">Bank:</span> Bank of America</p>
+                  <p><span className="text-white/70 font-medium">Account Name:</span> Ricky Richardson</p>
+                  <p><span className="text-white/70 font-medium">Account Number:</span> <span className="text-[#c9a84c] font-mono">488082660530</span></p>
                   <p><span className="text-white/70 font-medium">Reference:</span> <span className="text-[#c9a84c]">Your email address</span></p>
                 </div>
               )}
