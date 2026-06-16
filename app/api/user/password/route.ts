@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSessionUser } from '@/lib/auth';
-import { db } from '@/lib/db';
-import bcrypt from 'bcryptjs';
+import { createClient } from '@/lib/supabase/server';
 
 export async function PATCH(req: NextRequest) {
-  const session = await getSessionUser();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { currentPassword, newPassword } = await req.json();
   if (!currentPassword || !newPassword) {
@@ -15,14 +14,15 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: 'New password must be at least 6 characters' }, { status: 400 });
   }
 
-  const user = db.users.findById(session.userId);
-  if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
+  // Re-authenticate with the current password before allowing a change.
+  const { error: verifyError } = await supabase.auth.signInWithPassword({
+    email: user.email!,
+    password: currentPassword,
+  });
+  if (verifyError) return NextResponse.json({ error: 'Current password is incorrect' }, { status: 400 });
 
-  const valid = await db.users.verifyPassword(currentPassword, user.password);
-  if (!valid) return NextResponse.json({ error: 'Current password is incorrect' }, { status: 400 });
-
-  const hash = await bcrypt.hash(newPassword, 10);
-  db.users.update(session.userId, { password: hash });
+  const { error } = await supabase.auth.updateUser({ password: newPassword });
+  if (error) return NextResponse.json({ error: 'Failed to update password' }, { status: 500 });
 
   return NextResponse.json({ ok: true });
 }

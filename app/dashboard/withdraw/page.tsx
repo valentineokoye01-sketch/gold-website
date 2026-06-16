@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { getSessionUser } from '@/lib/auth';
-import { db, getInvestmentStats } from '@/lib/db';
+import { createClient } from '@/lib/supabase/server';
+import { getInvestmentStats, mapInvestment, mapWithdrawal, type InvestmentRow, type WithdrawalRow } from '@/lib/db';
 import WithdrawForm from '@/components/dashboard/WithdrawForm';
 import { CheckCircle, Clock, XCircle, Hourglass, AlertCircle, ArrowDownLeft } from 'lucide-react';
 
@@ -17,12 +17,19 @@ const statusConfig = {
 };
 
 export default async function WithdrawPage() {
-  const session = await getSessionUser();
-  if (!session) redirect('/auth/login');
+  const supabase = await createClient();
+  const { data: { user: authUser } } = await supabase.auth.getUser();
+  if (!authUser) redirect('/auth/login');
 
-  const user = db.users.findById(session.userId)!;
-  const investments = db.investments.findByUser(session.userId);
-  const withdrawals = db.withdrawals.findByUser(session.userId);
+  const [{ data: profile }, { data: investmentRows }, { data: withdrawalRows }] = await Promise.all([
+    supabase.from('profiles').select('kyc_status').eq('id', authUser.id).single(),
+    supabase.from('investments').select('*').eq('user_id', authUser.id).order('start_date', { ascending: false }),
+    supabase.from('withdrawals').select('*').eq('user_id', authUser.id).order('requested_at', { ascending: false }),
+  ]);
+
+  const user = { kycStatus: profile?.kyc_status ?? 'pending' };
+  const investments = (investmentRows as InvestmentRow[] | null ?? []).map(mapInvestment);
+  const withdrawals = (withdrawalRows as WithdrawalRow[] | null ?? []).map(mapWithdrawal);
 
   // Eligible = completed investments with profit available
   const eligible = investments.filter(i => i.status === 'completed' || i.status === 'active');

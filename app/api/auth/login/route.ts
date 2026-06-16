@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/db';
-import { signToken, TOKEN_NAME } from '@/lib/auth';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,32 +9,29 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email and password are required.' }, { status: 400 });
     }
 
-    const user = db.users.findByEmail(email);
-    if (!user) {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error || !data.user) {
       return NextResponse.json({ error: 'Invalid email or password.' }, { status: 401 });
     }
 
-    const valid = await db.users.verifyPassword(password, user.password);
-    if (!valid) {
-      return NextResponse.json({ error: 'Invalid email or password.' }, { status: 401 });
-    }
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('name, country, kyc_status')
+      .eq('id', data.user.id)
+      .single();
 
-    const token = await signToken({ userId: user.id, email: user.email });
-
-    const res = NextResponse.json({
+    return NextResponse.json({
       success: true,
-      user: { id: user.id, name: user.name, email: user.email, country: user.country, kycStatus: user.kycStatus },
+      user: {
+        id: data.user.id,
+        name: profile?.name ?? '',
+        email: data.user.email,
+        country: profile?.country ?? '',
+        kycStatus: profile?.kyc_status ?? 'pending',
+      },
     });
-
-    res.cookies.set(TOKEN_NAME, token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 7 * 24 * 60 * 60,
-    });
-
-    return res;
   } catch {
     return NextResponse.json({ error: 'Login failed. Please try again.' }, { status: 500 });
   }

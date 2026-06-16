@@ -1,21 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSessionUser } from '@/lib/auth';
-import { db } from '@/lib/db';
+import { createClient } from '@/lib/supabase/server';
 
 export async function PATCH(req: NextRequest) {
-  const session = await getSessionUser();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { name, phone, country } = await req.json();
   if (!name?.trim()) return NextResponse.json({ error: 'Name is required' }, { status: 400 });
 
-  const updated = db.users.update(session.userId, {
-    name: name.trim(),
-    phone: phone?.trim() ?? '',
-    country: country?.trim() ?? '',
-  });
+  const { data: updated, error } = await supabase
+    .from('profiles')
+    .update({
+      name: name.trim(),
+      phone: phone?.trim() ?? '',
+      country: country?.trim() ?? '',
+    })
+    .eq('id', user.id)
+    .select('name, phone, country')
+    .single();
 
-  if (!updated) return NextResponse.json({ error: 'User not found' }, { status: 404 });
+  if (error || !updated) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-  return NextResponse.json({ ok: true, user: { name: updated.name, phone: updated.phone, country: updated.country } });
+  return NextResponse.json({ ok: true, user: updated });
 }

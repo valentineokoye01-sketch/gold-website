@@ -176,7 +176,7 @@ export const faqs: FAQ[] = [
     category: 'Account & Verification',
     question: 'How do I contact support?',
     answer:
-      'Our support team is available via email (support@auragoldinvestments.com), WhatsApp (+1 800 287-4653), and Telegram (@AurimGoldSupport). Email responses are provided within 24 business hours. WhatsApp and Telegram messages are typically answered within 2–4 hours during business hours (Mon–Fri, 9am–6pm GMT).',
+      'Our support team is available via email (support@auragoldinvestments.com) and Telegram (@AurimGold). Email responses are provided within 24 business hours. Telegram messages are typically answered within 2–4 hours during business hours (Mon–Fri, 9am–6pm GMT).',
   },
 ];
 

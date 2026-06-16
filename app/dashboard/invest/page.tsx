@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { getSessionUser } from '@/lib/auth';
+import { createClient } from '@/lib/supabase/server';
 import DashboardInvestButton from '@/components/dashboard/DashboardInvestButton';
 import { plans } from '@/lib/plans';
 import { Check } from 'lucide-react';
@@ -8,8 +8,9 @@ import { Check } from 'lucide-react';
 export const metadata: Metadata = { title: 'Invest More' };
 
 export default async function InvestPage() {
-  const session = await getSessionUser();
-  if (!session) redirect('/auth/login');
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/auth/login');
 
   return (
     <div className="p-6 lg:p-8 max-w-5xl mx-auto">

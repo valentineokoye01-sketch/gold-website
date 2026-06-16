@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { getSessionUser } from '@/lib/auth';
-import { db, getInvestmentStats } from '@/lib/db';
+import { createClient } from '@/lib/supabase/server';
+import { getInvestmentStats, mapInvestment, mapWithdrawal, type InvestmentRow, type WithdrawalRow } from '@/lib/db';
 import { TrendingUp, DollarSign, BarChart3, Clock, ArrowUpRight, PlusCircle, Shield, AlertCircle } from 'lucide-react';
 import DashboardInvestButton from '@/components/dashboard/DashboardInvestButton';
 
@@ -12,12 +12,19 @@ const fmt = (n: number) => n.toLocaleString('en-US', { minimumFractionDigits: 2,
 const fmtK = (n: number) => n >= 1000 ? `$${(n / 1000).toFixed(1)}k` : `$${fmt(n)}`;
 
 export default async function DashboardPage() {
-  const session = await getSessionUser();
-  if (!session) redirect('/auth/login');
+  const supabase = await createClient();
+  const { data: { user: authUser } } = await supabase.auth.getUser();
+  if (!authUser) redirect('/auth/login');
 
-  const user = db.users.findById(session.userId)!;
-  const investments = db.investments.findByUser(session.userId);
-  const withdrawals = db.withdrawals.findByUser(session.userId);
+  const [{ data: profile }, { data: investmentRows }, { data: withdrawalRows }] = await Promise.all([
+    supabase.from('profiles').select('*').eq('id', authUser.id).single(),
+    supabase.from('investments').select('*').eq('user_id', authUser.id).order('start_date', { ascending: false }),
+    supabase.from('withdrawals').select('*').eq('user_id', authUser.id).order('requested_at', { ascending: false }),
+  ]);
+
+  const user = { ...profile!, createdAt: profile!.created_at, kycStatus: profile!.kyc_status, referralCode: profile!.referral_code };
+  const investments = (investmentRows as InvestmentRow[] | null ?? []).map(mapInvestment);
+  const withdrawals = (withdrawalRows as WithdrawalRow[] | null ?? []).map(mapWithdrawal);
 
   const active = investments.filter(i => i.status === 'active');
   const completed = investments.filter(i => i.status === 'completed');

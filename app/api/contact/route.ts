@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,16 +21,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Placeholder — log submission (no real email integration)
-    console.log('[AurimGold Contact Form Submission]', {
+    const supabase = await createClient();
+    const { error } = await supabase.from('contact_messages').insert({
       name,
       email,
-      phone: phone || 'Not provided',
-      country: country || 'Not provided',
-      investmentInterest: investmentInterest || 'Not specified',
+      phone: phone || '',
+      country: country || '',
+      investment_interest: investmentInterest || '',
       message,
-      timestamp: new Date().toISOString(),
     });
+
+    if (error) {
+      return NextResponse.json(
+        { success: false, error: 'An error occurred. Please try again.' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,

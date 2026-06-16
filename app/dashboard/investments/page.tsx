@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { getSessionUser } from '@/lib/auth';
-import { db, getInvestmentStats } from '@/lib/db';
+import { createClient } from '@/lib/supabase/server';
+import { getInvestmentStats, mapInvestment, type InvestmentRow } from '@/lib/db';
 import { TrendingUp, Clock, CheckCircle, Hourglass } from 'lucide-react';
 import DashboardInvestButton from '@/components/dashboard/DashboardInvestButton';
 
@@ -16,10 +16,17 @@ const statusConfig = {
 };
 
 export default async function InvestmentsPage() {
-  const session = await getSessionUser();
-  if (!session) redirect('/auth/login');
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/auth/login');
 
-  const investments = db.investments.findByUser(session.userId);
+  const { data: investmentRows } = await supabase
+    .from('investments')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('start_date', { ascending: false });
+
+  const investments = (investmentRows as InvestmentRow[] | null ?? []).map(mapInvestment);
 
   return (
     <div className="p-6 lg:p-8 max-w-5xl mx-auto">

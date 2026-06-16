@@ -1,14 +1,20 @@
 import { NextResponse } from 'next/server';
-import { getSessionUser } from '@/lib/auth';
-import { db, getInvestmentStats } from '@/lib/db';
+import { createClient } from '@/lib/supabase/server';
+import { getInvestmentStats, mapInvestment, mapWithdrawal, type InvestmentRow, type WithdrawalRow } from '@/lib/db';
 
 export async function GET() {
-  const session = await getSessionUser();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const userInvestments = db.investments.findByUser(session.userId);
-  const userWithdrawals = db.withdrawals.findByUser(session.userId);
-  const user = db.users.findById(session.userId);
+  const [{ data: investmentRows }, { data: withdrawalRows }, { data: profile }] = await Promise.all([
+    supabase.from('investments').select('*').eq('user_id', user.id).order('start_date', { ascending: false }),
+    supabase.from('withdrawals').select('*').eq('user_id', user.id).order('requested_at', { ascending: false }),
+    supabase.from('profiles').select('name, email, kyc_status, referral_code, created_at').eq('id', user.id).single(),
+  ]);
+
+  const userInvestments = (investmentRows as InvestmentRow[] | null ?? []).map(mapInvestment);
+  const userWithdrawals = (withdrawalRows as WithdrawalRow[] | null ?? []).map(mapWithdrawal);
 
   const active = userInvestments.filter((i) => i.status === 'active');
   const completed = userInvestments.filter((i) => i.status === 'completed');
@@ -39,11 +45,11 @@ export async function GET() {
 
   return NextResponse.json({
     user: {
-      name: user?.name,
-      email: user?.email,
-      kycStatus: user?.kycStatus,
-      referralCode: user?.referralCode,
-      memberSince: user?.createdAt,
+      name: profile?.name,
+      email: profile?.email,
+      kycStatus: profile?.kyc_status,
+      referralCode: profile?.referral_code,
+      memberSince: profile?.created_at,
     },
     stats: {
       totalInvested,

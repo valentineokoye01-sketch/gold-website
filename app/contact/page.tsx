@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
-import { Mail, MessageCircle, Send, Clock, MapPin } from 'lucide-react';
+import { Mail, Send, Clock, MapPin } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import FadeIn from '@/components/ui/FadeIn';
 import ContactForm from '@/components/contact/ContactForm';
-import { CONTACT_EMAIL, CONTACT_WHATSAPP, CONTACT_TELEGRAM, OFFICES, SOCIAL_LINKS } from '@/lib/constants';
+import { CONTACT_EMAIL, CONTACT_TELEGRAM, OFFICES, SOCIAL_LINKS } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
-    'Get in touch with AurimGold Investments. Email, WhatsApp, or Telegram — our team responds within 24 hours on business days.',
+    'Get in touch with AurimGold Investments. Email or Telegram — our team responds within 24 hours on business days.',
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact AurimGold Investments',
-    description: 'We\'re here to help. Reach our support team via email, WhatsApp, or Telegram.',
+    description: 'We\'re here to help. Reach our support team via email or Telegram.',
   },
 };
 
@@ -23,14 +23,6 @@ const contactMethods = [
     value: CONTACT_EMAIL,
     href: `mailto:${CONTACT_EMAIL}`,
     note: 'Response within 24–48 hours',
-  },
-  {
-    icon: MessageCircle,
-    title: 'WhatsApp',
-    value: CONTACT_WHATSAPP,
-    href: SOCIAL_LINKS.whatsapp,
-    note: 'Fastest response — 2–4 hours (business hours)',
-    external: true,
   },
   {
     icon: Send,
@@ -111,8 +103,8 @@ export default function ContactPage() {
                   </div>
                   <p className="text-white/50 text-sm leading-relaxed">
                     We respond to all email enquiries within 24 hours on business days (Mon–Fri,
-                    9am–6pm GMT). For urgent matters, WhatsApp and Telegram offer 2–4 hour response
-                    times during business hours.
+                    9am–6pm GMT). For urgent matters, Telegram offers a 2–4 hour response
+                    time during business hours.
                   </p>
                 </div>
               </FadeIn>

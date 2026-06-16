@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/db';
-import { signToken, TOKEN_NAME } from '@/lib/auth';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,28 +13,27 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Password must be at least 8 characters.' }, { status: 400 });
     }
 
-    const existing = db.users.findByEmail(email);
-    if (existing) {
-      return NextResponse.json({ error: 'An account with this email already exists.' }, { status: 409 });
+    const supabase = await createClient();
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { name, country, phone: phone || '' },
+      },
+    });
+
+    if (error) {
+      const message = error.message.toLowerCase().includes('already registered')
+        ? 'An account with this email already exists.'
+        : error.message;
+      return NextResponse.json({ error: message }, { status: 400 });
     }
 
-    const user = await db.users.create({ name, email, password, country, phone: phone || '' });
-    const token = await signToken({ userId: user.id, email: user.email });
-
-    const res = NextResponse.json({
+    return NextResponse.json({
       success: true,
-      user: { id: user.id, name: user.name, email: user.email, country: user.country, kycStatus: user.kycStatus },
+      user: { id: data.user?.id, name, email, country, kycStatus: 'pending' },
     });
-
-    res.cookies.set(TOKEN_NAME, token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 7 * 24 * 60 * 60,
-    });
-
-    return res;
   } catch {
     return NextResponse.json({ error: 'Registration failed. Please try again.' }, { status: 500 });
   }

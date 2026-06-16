@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Gem, Camera, Send, MessageCircle } from 'lucide-react';
-import { CONTACT_EMAIL, CONTACT_WHATSAPP, CONTACT_TELEGRAM, SOCIAL_LINKS } from '@/lib/constants';
+import { Gem, Send } from 'lucide-react';
+import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/lib/constants';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -20,7 +20,6 @@ const investmentLinks = [
 const supportLinks = [
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact Us', href: '/contact' },
-  { label: 'WhatsApp', href: SOCIAL_LINKS.whatsapp, external: true },
   { label: 'Telegram', href: SOCIAL_LINKS.telegram, external: true },
 ];
 
@@ -53,24 +52,6 @@ export default function Footer() {
             </p>
             {/* Socials */}
             <div className="flex items-center gap-3">
-              <a
-                href={SOCIAL_LINKS.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle size={14} />
-              </a>
-              <a
-                href={SOCIAL_LINKS.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
-                aria-label="Instagram"
-              >
-                <Camera size={14} />
-              </a>
               <a
                 href={SOCIAL_LINKS.telegram}
                 target="_blank"
@@ -204,7 +185,7 @@ export default function Footer() {
             © 2026 AurimGold Investments. All Rights Reserved.
           </p>
           <p className="text-xs text-white/20">
-            {CONTACT_EMAIL} · {CONTACT_WHATSAPP}
+            {CONTACT_EMAIL}
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { MessageCircle, Mail } from 'lucide-react';
+import { Send, Mail } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import FadeIn from '@/components/ui/FadeIn';
 import Accordion from '@/components/ui/Accordion';
@@ -78,7 +78,7 @@ export default function FaqPage() {
               Still Have Questions?
             </h2>
             <p className="text-white/50 text-lg mb-10">
-              Our support team responds within 24 business hours. WhatsApp for the fastest reply.
+              Our support team responds within 24 business hours. Telegram for the fastest reply.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -88,12 +88,12 @@ export default function FaqPage() {
                 <Mail size={18} /> Email Support
               </a>
               <a
-                href={SOCIAL_LINKS.whatsapp}
+                href={SOCIAL_LINKS.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#c9a84c] hover:bg-[#a8852e] text-[#0d1b2a] font-bold rounded-xl transition-all duration-300 hover:-translate-y-0.5 btn-shimmer"
               >
-                <MessageCircle size={18} /> WhatsApp Us
+                <Send size={18} /> Message Us on Telegram
               </a>
             </div>
           </FadeIn>

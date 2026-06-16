@@ -11,8 +11,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  if (pathname.startsWith('/dashboard')) return null;
-
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -20,6 +18,8 @@ export default function Navbar() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+
+  if (pathname.startsWith('/dashboard') || pathname.startsWith('/auth')) return null;
 
   return (
     <>

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { getSessionUser } from '@/lib/auth';
-import { db } from '@/lib/db';
+import { createClient } from '@/lib/supabase/server';
 import ProfileForm from '@/components/dashboard/ProfileForm';
 import PasswordFormClient from '@/components/dashboard/PasswordFormClient';
 import { Shield, CheckCircle, AlertCircle, Copy, User, Calendar, Globe } from 'lucide-react';
@@ -9,10 +8,12 @@ import { Shield, CheckCircle, AlertCircle, Copy, User, Calendar, Globe } from 'l
 export const metadata: Metadata = { title: 'My Profile' };
 
 export default async function ProfilePage() {
-  const session = await getSessionUser();
-  if (!session) redirect('/auth/login');
+  const supabase = await createClient();
+  const { data: { user: authUser } } = await supabase.auth.getUser();
+  if (!authUser) redirect('/auth/login');
 
-  const user = db.users.findById(session.userId)!;
+  const { data: profile } = await supabase.from('profiles').select('*').eq('id', authUser.id).single();
+  const user = { ...profile!, createdAt: profile!.created_at, kycStatus: profile!.kyc_status, referralCode: profile!.referral_code };
   const memberDays = Math.floor((Date.now() - new Date(user.createdAt).getTime()) / (1000 * 60 * 60 * 24));
 
   return (
